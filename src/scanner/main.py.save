@@ -1,0 +1,59 @@
+# /hacking_tool_proj/src/scanner/main.py
+# TO-DO: Adding a log system!
+
+# Imported module(s)
+# NOTE: Program needs to be executed at `/hacking_tool_proj/src/main.py` to avoid packages conflict(s).
+
+import socket
+import os
+from logger import Logger
+
+def quick_scan(target_host):
+
+    # Get absolute path to the quick_scan.txt file
+
+    base_dir = os.path.dirname(__file__)
+    file_path = os.path.join(base_dir, "lists", "quick_scan.txt")
+
+    # Read data inside quick_scan.txt
+
+    with open(file_path, "r") as f:
+        for line in f:
+            port = int(line.strip())
+
+            # Start scanning
+
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.settimeout(1)
+                result = s.connect_ex((target_host, port))
+
+                # Check result
+
+                if result == 0:
+                    print(f"Port {port} is open")
+
+    print("Note: Other ports scanned are closed or filtered.")
+
+def show_scanner_menu():
+
+    # Print menu for scanner with input
+
+    menu = """
+P O R T - S C A N N E R
+[0]  Exit
+[1]  Quick scan
+"""
+    print(menu)
+    option_taken = input("[ ] Select an option : ")
+
+    # Check option_taken
+
+    if option_taken == "0":
+        exit()
+
+    elif option_taken == "1":
+        target_host = input("\nTarget: ")
+        quick_scan(target_host)
+
+    else:
+        print("\nInvalid option.")
