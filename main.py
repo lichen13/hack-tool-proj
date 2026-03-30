@@ -8,6 +8,8 @@ def startup():
         print("HackToolProj only works on a Linux based system.")
         exit()
 
+    os.makedirs("Tools", exist_ok=True) # Skip if already created.
+    
     print("HackToolProj - By: Lichen")
 
     while True:
