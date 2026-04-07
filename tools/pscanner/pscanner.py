@@ -43,9 +43,3 @@ def quick_scan(target_host):
             executor.submit(scan_single_port, target_host, port)
 
     print("Note: Other ports scanned are closed or filtered.")
-
-print("Full scanning google.com:")
-full_scan("google.com")
-
-print("Quick scanning google.com:")
-quick_scan("google.com")
