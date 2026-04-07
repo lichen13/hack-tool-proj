@@ -8,7 +8,7 @@ def startup():
         print("HackToolProj only works on a Linux based system.")
         exit()
 
-    os.makedirs("Tools", exist_ok=True) # Skip if already created.
+    os.makedirs("tools", exist_ok=True) # Skip if already created.
     
     print("HackToolProj - By: Lichen")
 
@@ -24,7 +24,10 @@ def startup():
             exit()
         elif optionTaken == "1":
             os.system("clear")
-            print("\nPort Scanner is not accessible yet.")
+            if os.path.exists("tools/pscanner"):
+                pass
+            else:
+                print("Port Scanner directory not found in the tools folder.")
         else:
             os.system("clear")
             print("\nInvalid option, Please try again.")
