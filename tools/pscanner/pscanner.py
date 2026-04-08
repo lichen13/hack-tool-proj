@@ -43,3 +43,30 @@ def quick_scan(target_host):
             executor.submit(scan_single_port, target_host, port)
 
     print("Note: Other ports scanned are closed or filtered.")
+
+def main():
+    os.system("clear")
+
+    print("Port Scanner - By: Lichen")
+    print("\nMenu:")
+    print("0. Exit")
+    print("1. Quick scan")
+    print("2. Full scan")
+
+    choice = input("\nOption taken: ").strip()
+
+    if choice == "0":
+        os.system("clear")
+        print("\nSee you soon.\n")
+        exit()
+    elif choice == "1":
+        target = input("Enter target host: ")
+        quick_scan(target)
+    elif choice == "2":
+        target = input("Enter target host: ")
+        full_scan(target)
+    else:
+        os.system("clear")
+        print("\nInvalid option, Please try again.")
+
+main()
