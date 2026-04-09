@@ -1,5 +1,6 @@
 import os
 import requests
+from tools.pscanner.pscanner import main
 
 def startup():
     if os.name == "posix":
@@ -25,7 +26,7 @@ def startup():
         elif optionTaken == "1":
             os.system("clear")
             if os.path.exists("tools/pscanner"):
-                pass
+                main()
             else:
                 print("Port Scanner directory not found in the tools folder.")
         else:
