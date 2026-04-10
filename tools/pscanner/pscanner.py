@@ -53,5 +53,3 @@ def main():
     else:
         os.system("clear")
         print("\nInvalid option, Please try again.")
-
-main()
