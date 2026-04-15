@@ -39,7 +39,7 @@ def main():
 
     if choice == "0":
         os.system("clear")
-        print("\nSee you soon.\n")
+        print("See you soon.")
         return
     
     if choice in ("1", "2"):
