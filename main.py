@@ -1,36 +1,34 @@
 import os
-import requests
-from tools.pscanner.pscanner import main
+from tools.pscanner.pscanner import main as pscanner_main
 
-def startup():
-    if os.name == "posix":
-        os.system("clear")
-    else:
-        print("HackToolProj only works on a Linux based system.")
-        exit()
+def main():
+    if os.name != "posix":
+        print("HackToolProj only works on Linux.")
+        return
 
-    os.makedirs("tools", exist_ok=True) # Skip if already created.
-    
+    os.system("clear")
+
     print("HackToolProj - By: Lichen")
+    print("\n0. Exit\n1. Port Scanner\n2. Coming soon...\n3. Coming soon...\n4. Coming soon...")
+    
+    choice = input("\nSelect an option: ").strip()
 
-    while True:
-        print("\nMenu:")
-        print("0. Exit")
-        print("1. Port Scanner ( not working yet )")
-        optionTaken = input("\nOption taken: ").strip()
+    if choice == "0":
+        os.system("clear")
+        print("See you soon.")
+        return
+    elif choice == "1":
 
-        if optionTaken == "0":
+        if not os.path.exists("tools/pscanner"):
             os.system("clear")
-            print("\nSee you soon.\n")
-            exit()
-        elif optionTaken == "1":
-            os.system("clear")
-            if os.path.exists("tools/pscanner"):
-                main()
-            else:
-                print("Port Scanner directory not found in the tools folder.")
-        else:
-            os.system("clear")
-            print("\nInvalid option, Please try again.")
+            print("Directory 'tools/pscanner' not found.")
+            return
+        
+        pscanner_main()
 
-startup()
+    else:
+        os.system("clear")
+        print("Invalid option. Please try again.")
+        return
+    
+main()
